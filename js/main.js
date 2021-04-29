@@ -1,29 +1,38 @@
-const question = "ゲーム市場、最も売れたゲーム機はどれ?";
+const question = "ゲーム史上、最も売れたゲーム機はどれ?";
 const answers = [
   'スーパファミコン',
   'プレステーション２',
   'ニンテンドースイッチ',
-  'ニンテンドウーDS',
+  'ニンテンドーDS',
 ];
 
-const correct = 'ニンテンドーDS'
+const correct = 'ニンテンドーDS';
 
 const qText  = document.getElementById('question');
-const aBtn = document.getElementsByClassName('a-btn');
+const $button = document.getElementsByClassName('a-btn');
 qText.textContent = question;
 
-let num = 0;
-
-while( num < aBtn.length) {
-  aBtn[num].textContent = answers[num];
-  num++;
-  console.log(aBtn);
+// answersを各ボタンに入れる
+let buttonIndex = 0;
+while( buttonIndex < $button.length) {
+  $button[buttonIndex].textContent = answers[buttonIndex];
+  buttonIndex++;
 }
 
-aBtn[0].addEventListener('click', () => {
-  if(aBtn[0] === correct) {
-    alert('正解！');
+// 回答の合否判定
+const clickHandler = (e) => {
+  if(correct === e.target.textContent) {
+    window.alert('正解！');
   }else {
-    alert('不正解');
+    window.alert('不正解');
   }
-});
+};
+
+let handlerIndex = 0;
+while (handlerIndex < $button.length) {
+  $button[handlerIndex].addEventListener('click', (e) => {
+    clickHandler(e);
+  });
+  handlerIndex++;
+}
+
