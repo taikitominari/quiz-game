@@ -1,0 +1,59 @@
+/* header */
+header {
+  width: 100%;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  z-index: 100;
+}
+.container {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.header-item {
+  display: flex;
+  line-height: 50px;
+  color: #fff;
+}
+.header-title {
+  flex: 9;
+  font-size: 20px;
+}
+.counter {
+  flex: 1;
+  font-size: 20px;
+  color: red;
+}
+
+/* question */
+.question {
+  padding-top: 100px;
+}
+.question-text {
+  font-size: 18px;
+  line-height: 25px;
+}
+.q {
+  color: red;
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+/* answer */
+.answer {
+  padding-top: 50px;
+}
+.btn-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.a-btn {
+  padding: 20px 40px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.a-number {
+  margin-right: 20px;
+  font-size: 20px;
+}
