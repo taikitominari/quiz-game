@@ -19,10 +19,13 @@ header {
   flex: 9;
   font-size: 20px;
 }
-.counter {
+#correct {
+  margin-left: 10px;
+  color: red;
+}
+#counter {
   flex: 1;
   font-size: 20px;
-  color: red;
 }
 
 /* question */
