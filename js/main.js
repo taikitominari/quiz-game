@@ -10,7 +10,7 @@ const quiz = [
     ],
     correctText: '大正解！さすがです！',
     mistakeText: '不正解！答えは2位です。2位の人を抜いたら、あなたは当然2位になりますよね',
-    correct: 'ぷぷ'
+    correct: '2位'
   },
   {
     question: '出題主が小学生の時にやっていたスポーツはなんでしょう？',
@@ -42,8 +42,9 @@ const quiz = [
 const qText  = document.getElementById('question');
 const $button = document.getElementsByClassName('a-btn');
 const counter = document.getElementById('counter');
+const correctCount = document.getElementById('correct');
 let quizIndex = 0;
-
+let correctIndex = 0;
 
 // 問題文,ボタンのtextを入れる
 const setupQuiz = () => {
@@ -56,10 +57,11 @@ const setupQuiz = () => {
 };
 setupQuiz();
 
-
 // 回答の合否判定,次の問題へ移行
 const clickHandler = (e) => {
   if(quiz[quizIndex].correct === e.target.textContent) {
+    correctIndex++;
+    correctCount.textContent ='正' + correctIndex;
     window.alert(quiz[quizIndex].correctText);
   }else {
     window.alert(quiz[quizIndex].mistakeText);
@@ -70,9 +72,11 @@ const clickHandler = (e) => {
     setupQuiz();
     counter.textContent = quizIndex + 1 + "問目";
   }else {
-    window.alert('お疲れ様です。これで全問終了です');
+    window.alert('これで全問終了です。正解数は' + correctIndex + 'です');
     counter.textContent = '1問目';
     quizIndex = 0;
+    correctIndex = 0;
+    correctCount.textContent = '正' + correctIndex;
     setupQuiz();
   };
 };
