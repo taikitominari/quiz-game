@@ -1,34 +1,40 @@
 // 問題の配列
 const quiz = [
   {
-    question: 'ゲーム史上、最も売れたゲーム機はどれ?',
+    question: 'かけっこをしています。あなたはやっとの思いで3位の人を抜きました。今あなたは何位でしょう？',
     answers: [
-      'スーパファミコン',
-      'プレステーション２',
-      'ニンテンドースイッチ',
-      'ニンテンドーDS',
+      '3位',
+      '2位',
+      '1位',
+      '4位',
     ],
-    correct: 'ニンテンドーDS'
-  },
-  {
-    question: '今日の朝ごはんで美味しいと思ったものは次のうちどれ',
-    answers: [
-      'ヤクルト',
-      'パン',
-      '昨日の残りのカレー',
-      '日にちが立ちすぎてパッサパッサになってしまったエアリアル',
-    ],
-    correct: '日にちが立ちすぎてパッサパッサになってしまったエアリアル'
-  },
-  {
-    question: '私のペットのトイプードルの名前は',
-    answers: [
-      'ヤンヤンつけぼう',
-      'マロンちゃん',
-      'ぷぷ',
-      'ララ',
-    ],
+    correctText: '大正解！さすがです！',
+    mistakeText: '不正解！答えは2位です。2位の人を抜いたら、あなたは当然2位になりますよね',
     correct: 'ぷぷ'
+  },
+  {
+    question: '出題主が小学生の時にやっていたスポーツはなんでしょう？',
+    answers: [
+      '野球',
+      'サッカー',
+      'フィギアスケート',
+      'ラグビー',
+    ],
+    correctText: '大正解！ ポジションはショートをやっていました！',
+    mistakeText: '不正解です！答えは野球です。昔はまん丸坊主でした。',
+    correct: '野球'
+  },
+  {
+    question: 'ボールペンと消しゴムの値段は合わせて110円。ボールペンは消しゴムより100円高いです。では、消しゴムの値段は？',
+    answers: [
+      '20円',
+      '10円',
+      '5円',
+      '0円',
+    ],
+    correctText: '素晴らしい！大正解！ 私は初め10円だと思っていました...',
+    mistakeText: '不正解です！答えは5円です。『消しゴム+ボールペン=110円』すなわち、『消しゴム+(消しゴム+100)=110』を満たす消しゴムの値段を求めると５円となります。',
+    correct: '5円'
   },
 ];
 
@@ -54,9 +60,9 @@ setupQuiz();
 // 回答の合否判定,次の問題へ移行
 const clickHandler = (e) => {
   if(quiz[quizIndex].correct === e.target.textContent) {
-    window.alert('正解！');
+    window.alert(quiz[quizIndex].correctText);
   }else {
-    window.alert('不正解');
+    window.alert(quiz[quizIndex].mistakeText);
   }
   quizIndex++
 
@@ -64,7 +70,7 @@ const clickHandler = (e) => {
     setupQuiz();
     counter.textContent = quizIndex + 1 + "問目";
   }else {
-    window.alert('終了です');
+    window.alert('お疲れ様です。これで全問終了です');
     counter.textContent = '1問目';
     quizIndex = 0;
     setupQuiz();
