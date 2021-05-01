@@ -60,3 +60,8 @@ header {
   margin-right: 20px;
   font-size: 20px;
 }
+#hint-text {
+  padding-top: 20px;
+  font-size: 20px;
+  color: blue;
+}

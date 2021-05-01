@@ -10,19 +10,21 @@ const quiz = [
     ],
     correctText: '大正解！さすがです！',
     mistakeText: '不正解！答えは3位です。3位の人を抜いたら、あなたは当然3位になりますよね',
-    correct: '3位'
+    correct: '3位',
+    hint: '一度実際に想像してみるとひっかけに気づくかも...'
   },
   {
     question: '出題主が小学生の時にやっていたスポーツはなんでしょう？',
     answers: [
       '野球',
       'サッカー',
-      'フィギアスケート',
+      '卓球',
       'ラグビー',
     ],
     correctText: '大正解！ ポジションはショートをやっていました！',
     mistakeText: '不正解です！答えは野球です。昔はまん丸坊主でした。',
-    correct: '野球'
+    correct: '野球',
+    hint: '当時はよく手にマメができて大変でした...'
   },
   {
     question: 'ボールペンと消しゴムの値段は合わせて110円。ボールペンは消しゴムより100円高いです。では、消しゴムの値段は？',
@@ -34,7 +36,8 @@ const quiz = [
     ],
     correctText: '素晴らしい！大正解！ 私は初め10円だと思っていました...',
     mistakeText: '不正解です！答えは5円です。『消しゴム+ボールペン=110円』すなわち、『消しゴム+(消しゴム+100)=110』を満たす消しゴムの値段を求めると５円となります。',
-    correct: '5円'
+    correct: '5円',
+    hint: '『消しゴム+(消しゴム+100円)=110円』と置き換えるとわかりやすいかも！'
   },
 ];
 
@@ -43,6 +46,8 @@ const qText  = document.getElementById('question');
 const $button = document.getElementsByClassName('a-btn');
 const counter = document.getElementById('counter');
 const correctCount = document.getElementById('correct');
+const hint = document.getElementById('hint');
+const hintText = document.getElementById('hint-text');
 let quizIndex = 0;
 let correctIndex = 0;
 
@@ -66,6 +71,9 @@ const clickHandler = (e) => {
   }else {
     window.alert(quiz[quizIndex].mistakeText);
   }
+  // ヒントリセット
+  hintText.textContent = '';
+
   quizIndex++
 
   if(quizIndex < quiz.length) {
@@ -80,6 +88,11 @@ const clickHandler = (e) => {
     setupQuiz();
   };
 };
+
+// ヒントの表示
+hint.addEventListener('click' , () => {
+  hintText.textContent = quiz[quizIndex].hint;
+});
 
 // ユーザーが押したボタンのイベント
 let handlerIndex = 0;
