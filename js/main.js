@@ -48,6 +48,7 @@ const counter = document.getElementById('counter');
 const correctCount = document.getElementById('correct');
 const hint = document.getElementById('hint');
 const hintText = document.getElementById('hint-text');
+const hintBox = document.getElementById('hint-box');
 let quizIndex = 0;
 let correctIndex = 0;
 
@@ -72,6 +73,7 @@ const clickHandler = (e) => {
     window.alert(quiz[quizIndex].mistakeText);
   }
   // ヒントリセット
+  hintBox.appendChild(hint);
   hintText.textContent = '';
 
   quizIndex++
@@ -91,7 +93,11 @@ const clickHandler = (e) => {
 
 // ヒントの表示
 hint.addEventListener('click' , () => {
-  hintText.textContent = quiz[quizIndex].hint;
+  let result = confirm('ヒントを表示しますか？');
+  if(result) {
+    hintText.textContent = quiz[quizIndex].hint;
+    hint.remove();
+  };
 });
 
 // ユーザーが押したボタンのイベント
